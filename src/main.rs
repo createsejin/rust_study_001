@@ -18,7 +18,10 @@ fn change(some_string: &mut String) {
     some_string.push_str(", World");
 }
 
-fn main() {
+mod study;
+
+#[allow(dead_code)]
+fn main_002() {
     let mut s = String::from("hello");
 
     let r1 = &s;
@@ -27,7 +30,12 @@ fn main() {
     
     let r3 = &mut s;
     println!("{}", r3);
-} // dddtest
+} 
+
+fn main() {
+    study::study01::study001();
+}
+
 
 
 
