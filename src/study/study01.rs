@@ -19,6 +19,12 @@ impl Rectangle {
     fn can_hold(&self, other: &Rectangle) -> bool {
         self.width >= other.width && self.height >= other.height 
     }
+    fn print_area(&self) {
+        println!(
+            "The area of the rectangle is {} square pixels.",
+            self.area()
+        );
+    }
 }
 
 #[allow(dead_code)]
@@ -35,10 +41,9 @@ pub fn study001() {
         width: 60,
         height: 45,
     };
-    println!(
-        "The area of the rectangle is {} square pixels.",
-        rect1.area()
-    );
+    let rect4 = Rectangle::square(25);
+    rect1.print_area();
+    rect4.print_area();
     if rect1.width() {
         println!("The rectangle has a nonzero width\nit is {}", rect1.width);
     }
