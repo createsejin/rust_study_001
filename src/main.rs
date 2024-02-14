@@ -33,7 +33,7 @@ fn main_002() {
 } 
 
 fn main() {
-    study::study06::study001();
+    study::study06::study004();
 }
 
 
