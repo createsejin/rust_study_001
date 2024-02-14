@@ -1,2 +1,3 @@
-pub mod study01;
+pub mod study05;
 pub mod study06;
+pub mod study07;
