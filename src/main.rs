@@ -1,3 +1,9 @@
+mod study;
+
+fn main() {
+    study::study06::study004();
+}
+
 #[allow(dead_code)]
 fn main_000() {
     println!("Hello, world!");
@@ -18,8 +24,6 @@ fn change(some_string: &mut String) {
     some_string.push_str(", World");
 }
 
-mod study;
-
 #[allow(dead_code)]
 fn main_002() {
     let mut s = String::from("hello");
@@ -32,9 +36,7 @@ fn main_002() {
     println!("{}", r3);
 } 
 
-fn main() {
-    study::study06::study004();
-}
+
 
 
 
