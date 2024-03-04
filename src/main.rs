@@ -1,7 +1,7 @@
 mod study;
 
 fn main() {
-    study::study06::study004();
+    study::study07::study001();
 }
 
 #[allow(dead_code)]
