@@ -114,5 +114,29 @@ pub fn _study007() {
 }
 
 pub fn _study008() {
-    
+    let hello = String::from("Здравствуйте");
+    let s = &hello[0..4];
+    println!("{s}");
+    for c in hello.chars() {
+        println!("{}", c);
+    }
+    let hello_kor = String::from("안녕하시오.");
+    for c in hello_kor.chars() {
+        println!("{}", c);
+    } println!();
+
+    let size_of_kor = hello_kor.len();
+    println!("the hello_kor bytes len = {}", size_of_kor);
+    let mut i = 0;
+    print!("[ ");
+    for b in hello_kor.bytes() {
+        if i % 3 == 0 { print!("(") }
+        if i == size_of_kor - 1 { print!("{b}") }
+        else { 
+            if i % 3 == 2 { print!("{b}), ")}
+            else { print!("{b}, "); }            
+        } // 하지만 이것은 완벽한 방법은 아니다.
+        i += 1;
+    } println!(" ]");
 }
+// 8.3. 부터
