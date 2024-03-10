@@ -1,5 +1,5 @@
 mod study;
 
 fn main() {
-    study::study08::_study008();
+    study::study08::_study009();
 }

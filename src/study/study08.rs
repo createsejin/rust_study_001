@@ -139,4 +139,18 @@ pub fn _study008() {
         i += 1;
     } println!(" ]");
 }
+
+// rust에서는 이런 Debug annotation을 이용해서 열거형의 이름을 출력할 수 있다!
+#[derive(Debug)] #[allow(dead_code)]
+enum UsState {
+    Alabame,
+    Alaska,
+    LA,    
+}
+
+pub fn _study009() {
+    let state1 = UsState::Alabame;
+    println!("state1 = {:?}", state1);
+}
+
 // 8.3. 부터
