@@ -182,6 +182,28 @@ pub fn _study011() { // Overwriting a Value
         println!("{key} team score : {value}");
     }
 }
+// Adding a Key and Value Only If a Key Isn’t Present
 pub fn _study012() {
+    let mut scores: HashMap<String, u32> = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+
+    scores.entry(String::from("Yellow")).or_insert(50);
+    scores.entry(String::from("Blue")).or_insert(50);
+
+    println!("{:?}", scores);
+}
+// Updating a Value Based on the Old Value
+pub fn _study013() {
+    let text = "hello world wonderful world ya hello";
+    let mut map = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+    println!("{:?}", map);
+}
+// Hashing Functions
+pub fn _study014() {
     
 }
