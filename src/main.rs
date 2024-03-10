@@ -1,5 +1,6 @@
-mod study;
+use rust_study_001::study;
+
 
 fn main() {
-    study::study08::_study009();
+    study::study08::_study010();
 }

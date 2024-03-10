@@ -1,3 +1,5 @@
+pub use crate::study::study08;
+
 pub fn _study001() {
     #[allow(unused_variables)]
     let mut v = Vec::new();
@@ -141,16 +143,30 @@ pub fn _study008() {
 }
 
 // rust에서는 이런 Debug annotation을 이용해서 열거형의 이름을 출력할 수 있다!
+// struct도 가능하다. 다만, method 같은건 안되는 모양이다.
 #[derive(Debug)] #[allow(dead_code)]
 enum UsState {
     Alabame,
     Alaska,
     LA,    
 }
-
 pub fn _study009() {
     let state1 = UsState::Alabame;
     println!("state1 = {:?}", state1);
 }
 
 // 8.3. 부터
+use std::collections::HashMap;
+
+pub fn _study010() {
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+    let team_name = String::from("Blue");
+    let score = scores.get(&team_name).copied().unwrap_or(0);
+    println!("{team_name} team score : {score}\n");
+
+    for (key, value) in &scores {
+        println!("{key} team score : {value}");
+    }
+}

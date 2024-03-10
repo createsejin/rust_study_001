@@ -1,3 +1,7 @@
+pub mod study;
+
+pub use crate::study::study08;
+
 #[allow(dead_code)]
 mod front_of_house;
 
