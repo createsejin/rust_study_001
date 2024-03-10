@@ -257,24 +257,18 @@ pub fn _study014() {
 
 // exercise2
 fn make_pig_latin(word: &mut String) {    
-    println!("--------------------------------------------");
-    println!("word = {}", word);
-
     let vowels: Vec<&str> = vec!["a", "i", "u", "e", "o"];
-
     let first_char = &word[0..1];
-    println!("first char = {}", first_char);
-    let remain_str = &word[1..];
-    println!("remain_str = {}", remain_str);    
-    let mut result = String::new();
+    let remain_str = &word[1..];   
     if vowels.contains(&first_char) { 
-        println!("is vowel.");
-        result.push_str(word);
+        word.push_str("-hay");
+        println!("{word}");
     }
     else { 
-        println!("is not vowel.")
+        let mut result = remain_str.to_string();
+        result += &format!("-{}ay", first_char);
+        println!("{result}");
     }
-    println!("{}", result);
 }
 
 pub fn _study015() {
