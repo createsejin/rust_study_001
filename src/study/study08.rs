@@ -204,6 +204,82 @@ pub fn _study013() {
     println!("{:?}", map);
 }
 // Hashing Functions
-pub fn _study014() {
+
+// exercise1
+fn sort(vec: &mut Vec<i32>) {
+    let size = vec.len();
+    let mut switch_count = 0;
+    for i in 0..(size - 1) {
+        if vec[i] > vec[i + 1] {
+            let temp = vec[i];
+            vec[i] = vec[i + 1];
+            vec[i + 1] = temp;
+            switch_count += 1;
+        }
+    }
+    if switch_count > 0 {
+        sort(vec); // 재귀 호출
+    }
+}
+
+fn found_median(vec: &mut Vec<i32>) {
+    sort(vec);
+    for num in vec.iter_mut() {
+        print!("{} ", num);
+    } println!();
+    let median_index: usize = vec.len() / 2;
+    let median = vec.get(median_index);
+    match median {
+        Some(num) => println!("median = {num}"),
+        _ => println!("cannot found median."),
+    }
+}
+fn get_modes(vec: &mut Vec<i32>) {
+    let mut modes: HashMap<i32, u32> = HashMap::new();
+    for num in vec.iter_mut() {
+        let mode = modes.entry(*num).or_insert(0);
+        *mode += 1;
+    }
+
+    let mut entries: Vec<_> = modes.iter().collect();
+    entries.sort_by(|a, b| b.1.cmp(a.1));
     
+    for (key, value) in &entries {
+        println!("{key} : {value}");
+    }
+}
+
+pub fn _study014() {
+    let mut numbers = vec![1, 5, 3, 7, 4, 4, 7, 3, 2, 1, 6, 7];
+    found_median(&mut numbers);
+    get_modes(&mut numbers);    
+}
+
+// exercise2
+fn make_pig_latin(word: &mut String) {    
+    println!("--------------------------------------------");
+    println!("word = {}", word);
+
+    let vowels: Vec<&str> = vec!["a", "i", "u", "e", "o"];
+
+    let first_char = &word[0..1];
+    println!("first char = {}", first_char);
+    let remain_str = &word[1..];
+    println!("remain_str = {}", remain_str);    
+    let mut result = String::new();
+    if vowels.contains(&first_char) { 
+        println!("is vowel.");
+        result.push_str(word);
+    }
+    else { 
+        println!("is not vowel.")
+    }
+    println!("{}", result);
+}
+
+pub fn _study015() {
+    let mut word1 = String::from("apple");
+    make_pig_latin(&mut word1);
+    let mut word2 = String::from("first");
+    make_pig_latin(&mut word2);
 }
