@@ -1,4 +1,5 @@
 pub use crate::study::study08;
+use std::io::{self, Write};
 
 pub fn _study001() {
     #[allow(unused_variables)]
@@ -270,10 +271,69 @@ fn make_pig_latin(word: &mut String) {
         println!("{result}");
     }
 }
-
 pub fn _study015() {
     let mut word1 = String::from("apple");
     make_pig_latin(&mut word1);
     let mut word2 = String::from("first");
     make_pig_latin(&mut word2);
+}
+
+// exercise3
+fn get_input(prompt: &str) -> String {
+    print!("{}", prompt);
+    io::stdout().flush().unwrap();
+
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
+    input.trim().to_string()
+}
+
+fn print_help_msg() {
+    println!("to add employee, input add command something like that:");
+    println!("cmd> add Amir to Sales");
+    println!("show the current employee table, use 'show' command.");
+    println!("show help message, use 'help' command.");
+    println!("to quit, use 'q' command.")
+}
+
+pub fn _study016() {
+    let mut first: bool = true;
+    let mut emp_table: HashMap<String, String> = HashMap::new();
+    loop {
+        println!("--------------------------------------------------------");
+        if first {
+            print_help_msg();
+            first = false;
+        }
+        let input = get_input("cmd> ");
+        match input.trim().to_lowercase().as_str() {
+            "q" => { 
+                println!("exit program.");
+                break; 
+            },
+            "show" => {
+                if emp_table.is_empty() { println!("the table is empty.") }
+                else {
+                    for (name, department) in &emp_table {
+                        println!("{name}: {department}");
+                    }
+                }
+            }
+            "help" => {
+                print_help_msg();
+            },
+            _ => {
+                let words: Vec<&str> = input.split_whitespace().collect();
+                if words.len() == 4 && words[0].to_lowercase() == "add" 
+                    && words[2].to_lowercase() == "to" {
+                    let name = words[1].to_string();
+                    let department = words[3].to_string();
+                    emp_table.insert(name.clone(), department.clone());
+                    println!("success: add {name} to {department}");
+                } else { println!(r#"'{input}' is not correct command."#) }
+            },
+        }        
+    }        
 }
