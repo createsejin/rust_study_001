@@ -1,5 +1,5 @@
 mod study;
 
 fn main() {
-    study::study06::study004();
+    rust_study_000::hosting::add_to_waitlist();
 }

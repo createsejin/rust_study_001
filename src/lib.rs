@@ -60,7 +60,7 @@ pub fn eat_at_restaurant_001() {
     println!("I'd like {my_toast} toast please.");
 }
 
-use crate::front_of_house::hosting;
+pub use crate::front_of_house::hosting;
 pub fn eat_at_restaurant_000() {
     // Absolute path
     //crate::front_of_house::hosting::add_to_waitlist();
