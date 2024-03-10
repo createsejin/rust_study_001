@@ -160,8 +160,11 @@ use std::collections::HashMap;
 
 pub fn _study010() {
     let mut scores = HashMap::new();
-    scores.insert(String::from("Blue"), 10);
-    scores.insert(String::from("Yellow"), 50);
+    let blue_team = String::from("blue");
+    let yellow_team = String::from("yellow");
+    scores.insert(&blue_team, 10);
+    scores.insert(&blue_team, 24);
+    scores.insert(&yellow_team, 50);
     let team_name = String::from("Blue");
     let score = scores.get(&team_name).copied().unwrap_or(0);
     println!("{team_name} team score : {score}\n");
@@ -169,4 +172,16 @@ pub fn _study010() {
     for (key, value) in &scores {
         println!("{key} team score : {value}");
     }
+}
+pub fn _study011() { // Overwriting a Value
+    let mut scores: HashMap<String, u32> = HashMap::new();
+    scores.insert(String::from("Blue"), 23);
+    scores.insert(String::from("Blue"), 21);
+    scores.insert(String::from("Yellow"), 50);
+    for (key, value) in &scores {
+        println!("{key} team score : {value}");
+    }
+}
+pub fn _study012() {
+    
 }
