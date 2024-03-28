@@ -4,7 +4,10 @@ use std::io::{self, Write};
 pub fn _study001() {
     #[allow(unused_variables)]
     let mut v = Vec::new();
-    v.push(5); v.push(6); v.push(7); v.push(8);
+    v.push(5);
+    v.push(6);
+    v.push(7);
+    v.push(8);
 
     #[allow(unused_variables)]
     let v2 = vec![1, 2, 3, 4, 5];
@@ -14,7 +17,7 @@ pub fn _study001() {
     let third: Option<&i32> = v2.get(2);
     match third {
         Some(third) => println!("The third element is {third}"),
-        None => println!("There is no third element.")
+        None => println!("There is no third element."),
     }
 
     //let dose_not_exist = &v[100];
@@ -27,13 +30,14 @@ pub fn _study002() {
     let first = &v[0];
     //v.push(6); // panic!
     println!("The first element is: {first}");
-} 
+}
 
 pub fn _study003() {
     let v = vec![100, 32, 57];
     for i in &v {
         print!("{i} ");
-    } println!();
+    }
+    println!();
 }
 
 pub fn _study004() {
@@ -41,7 +45,8 @@ pub fn _study004() {
     for i in &mut v {
         *i += 50;
         print!("{i} ");
-    } println!();
+    }
+    println!();
 }
 
 #[allow(dead_code)]
@@ -62,7 +67,7 @@ pub fn _study005() {
 // 8.2.
 pub fn _study006() {
     let mut _s = String::new();
-    
+
     let data = "initial contents";
     let _s = data.to_string();
     let _s = "initial contents2".to_string();
@@ -98,8 +103,8 @@ pub fn _study007() {
     s.push_str(s2);
     s.push('!');
     println!("{s}");
-    
-    let s3 = String::from(" world!");    
+
+    let s3 = String::from(" world!");
     let s4 = s + &s3;
     println!("{s4}");
     //println!("{}", s);
@@ -112,7 +117,7 @@ pub fn _study007() {
     //println!("{s}");
     let s = format!("{s1}-{s2}-{s3}");
     println!("{s}");
-    
+
     //let h = s[0];
 }
 
@@ -126,30 +131,39 @@ pub fn _study008() {
     let hello_kor = String::from("안녕하시오.");
     for c in hello_kor.chars() {
         println!("{}", c);
-    } println!();
+    }
+    println!();
 
     let size_of_kor = hello_kor.len();
     println!("the hello_kor bytes len = {}", size_of_kor);
     let mut i = 0;
     print!("[ ");
     for b in hello_kor.bytes() {
-        if i % 3 == 0 { print!("(") }
-        if i == size_of_kor - 1 { print!("{b}") }
-        else { 
-            if i % 3 == 2 { print!("{b}), ")}
-            else { print!("{b}, "); }            
+        if i % 3 == 0 {
+            print!("(")
+        }
+        if i == size_of_kor - 1 {
+            print!("{b}")
+        } else {
+            if i % 3 == 2 {
+                print!("{b}), ")
+            } else {
+                print!("{b}, ");
+            }
         } // 하지만 이것은 완벽한 방법은 아니다.
         i += 1;
-    } println!(" ]");
+    }
+    println!(" ]");
 }
 
 // rust에서는 이런 Debug annotation을 이용해서 열거형의 이름을 출력할 수 있다!
 // struct도 가능하다. 다만, method 같은건 안되는 모양이다.
-#[derive(Debug)] #[allow(dead_code)]
+#[derive(Debug)]
+#[allow(dead_code)]
 enum UsState {
     Alabame,
     Alaska,
-    LA,    
+    LA,
 }
 pub fn _study009() {
     let state1 = UsState::Alabame;
@@ -174,7 +188,8 @@ pub fn _study010() {
         println!("{key} team score : {value}");
     }
 }
-pub fn _study011() { // Overwriting a Value
+pub fn _study011() {
+    // Overwriting a Value
     let mut scores: HashMap<String, u32> = HashMap::new();
     scores.insert(String::from("Blue"), 23);
     scores.insert(String::from("Blue"), 21);
@@ -227,7 +242,8 @@ fn found_median(vec: &mut Vec<i32>) {
     sort(vec);
     for num in vec.iter_mut() {
         print!("{} ", num);
-    } println!();
+    }
+    println!();
     let median_index: usize = vec.len() / 2;
     let median = vec.get(median_index);
     match median {
@@ -244,7 +260,7 @@ fn get_modes(vec: &mut Vec<i32>) {
 
     let mut entries: Vec<_> = modes.iter().collect();
     entries.sort_by(|a, b| b.1.cmp(a.1));
-    
+
     for (key, value) in &entries {
         println!("{key} : {value}");
     }
@@ -253,19 +269,18 @@ fn get_modes(vec: &mut Vec<i32>) {
 pub fn _study014() {
     let mut numbers = vec![1, 5, 3, 7, 4, 4, 7, 3, 2, 1, 6, 7];
     found_median(&mut numbers);
-    get_modes(&mut numbers);    
+    get_modes(&mut numbers);
 }
 
 // exercise2
-fn make_pig_latin(word: &mut String) {    
+fn make_pig_latin(word: &mut String) {
     let vowels: Vec<&str> = vec!["a", "i", "u", "e", "o"];
     let first_char = &word[0..1];
-    let remain_str = &word[1..];   
-    if vowels.contains(&first_char) { 
+    let remain_str = &word[1..];
+    if vowels.contains(&first_char) {
         word.push_str("-hay");
         println!("{word}");
-    }
-    else { 
+    } else {
         let mut result = remain_str.to_string();
         result += &format!("-{}ay", first_char);
         println!("{result}");
@@ -309,13 +324,14 @@ pub fn _study016() {
         }
         let input = get_input("cmd> ");
         match input.trim().to_lowercase().as_str() {
-            "q" => { 
+            "q" => {
                 println!("exit program.");
-                break; 
-            },
+                break;
+            }
             "show" => {
-                if emp_table.is_empty() { println!("the table is empty.") }
-                else {
+                if emp_table.is_empty() {
+                    println!("the table is empty.")
+                } else {
                     for (name, department) in &emp_table {
                         println!("{name}: {department}");
                     }
@@ -323,17 +339,21 @@ pub fn _study016() {
             }
             "help" => {
                 print_help_msg();
-            },
+            }
             _ => {
                 let words: Vec<&str> = input.split_whitespace().collect();
-                if words.len() == 4 && words[0].to_lowercase() == "add" 
-                    && words[2].to_lowercase() == "to" {
+                if words.len() == 4
+                    && words[0].to_lowercase() == "add"
+                    && words[2].to_lowercase() == "to"
+                {
                     let name = words[1].to_string();
                     let department = words[3].to_string();
                     emp_table.insert(name.clone(), department.clone());
                     println!("success: add {name} to {department}");
-                } else { println!(r#"'{input}' is not correct command."#) }
-            },
-        }        
-    }        
+                } else {
+                    println!(r#"'{input}' is not correct command."#)
+                }
+            }
+        }
+    }
 }

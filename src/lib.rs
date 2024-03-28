@@ -1,3 +1,4 @@
+pub mod leetcode;
 pub mod study;
 
 pub use crate::study::study08;

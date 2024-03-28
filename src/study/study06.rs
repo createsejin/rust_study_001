@@ -1,6 +1,8 @@
 enum IpAddr {
     //V4(String),
+    #[allow(dead_code)]
     V4(u8, u8, u8, u8),
+    #[allow(dead_code)]
     V6(String),
 }
 #[allow(dead_code)]
@@ -11,9 +13,7 @@ enum Message {
     ChangeColor(i32, i32, i32),
 }
 impl Message {
-    fn call(&self) {
-
-    }
+    fn call(&self) {}
 }
 
 #[allow(dead_code)]
@@ -54,13 +54,13 @@ fn value_in_cents(coin: Coin) -> u8 {
         Coin::Penny => {
             println!("Lucky penny!");
             1
-        },
+        }
         Coin::Nickel => 5,
         Coin::Dime => 10,
         Coin::Quarter(state) => {
             println!("State quarter from {:?}!", state);
             25
-        },
+        }
     }
 }
 // 6.2 Patterns That Bind to Values
