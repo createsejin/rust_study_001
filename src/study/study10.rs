@@ -113,6 +113,7 @@ pub fn _study006() {
 }
 // Traits: Defining Shared Behavior
 use crate::{NewsArticle, Summary, Tweet};
+
 pub fn _study007() {
   let tweet = Tweet {
     username: String::from("horse_ebooks"),
@@ -132,4 +133,20 @@ pub fn _study007() {
     ),
   };
   println!("New article available! {}", article.summarize());
+}
+// Traits as Parameters
+pub fn notify(item: &impl Summary) {
+  println!("Breaking new! {}", item.summarize());
+}
+pub fn _study008() {
+  let article = NewsArticle {
+    headline: String::from("Penguins win the Stanley Cup Championship!"),
+    location: String::from("Pittsburgh, PA, USA"),
+    author: String::from("Iceburgh"),
+    content: String::from(
+      "The Pittsburgh Penguins once again are the best \
+             hockey team in the NHL.",
+    ),
+  };
+  notify(&article);
 }
