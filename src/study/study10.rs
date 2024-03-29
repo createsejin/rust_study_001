@@ -112,3 +112,13 @@ pub fn _study006() {
   println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
 }
 // Traits: Defining Shared Behavior
+use crate::{Summary, Tweet};
+pub fn _study007() {
+  let tweet = Tweet {
+    username: String::from("horse_ebooks"),
+    content: String::from("of course, as you probably already know, people"),
+    reply: false,
+    retweet: false,
+  };
+  println!("1 new tweet: {}", tweet.summarize());
+}
