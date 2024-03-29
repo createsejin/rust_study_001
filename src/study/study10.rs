@@ -105,12 +105,20 @@ impl<X1, Y1> Point3<X1, Y1> {
     }
   }
 }
+impl<X1: Display, Y1: Display> Point3<X1, Y1> {
+  fn print(&self) {
+    println!("x = {}, y = {}", self.x, self.y);
+  }
+}
 pub fn _study006() {
   let p1 = Point3 { x: 5, y: 10.4 };
   let p2 = Point3 { x: "Hello", y: 'c' };
   let p3 = p1.mixup(p2);
-  println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
+  // println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
+  p3.print();
 }
+use std::fmt::Display;
+
 // Traits: Defining Shared Behavior
 use crate::{NewsArticle, Summary, Tweet};
 
@@ -135,8 +143,15 @@ pub fn _study007() {
   println!("New article available! {}", article.summarize());
 }
 // Traits as Parameters
-pub fn notify(item: &impl Summary) {
+pub fn notify1(item: &impl Summary) {
   println!("Breaking new! {}", item.summarize());
+}
+pub fn notify2<T: Summary>(item: &T) {
+  println!("Breaking new! {}", item.summarize());
+}
+pub fn notify3<T: Summary>(item1: &T, item2: &T) {
+  println!("Breaking new! {}", item1.summarize());
+  println!("Breaking new! {}", item2.summarize());
 }
 pub fn _study008() {
   let article = NewsArticle {
@@ -148,5 +163,9 @@ pub fn _study008() {
              hockey team in the NHL.",
     ),
   };
-  notify(&article);
+  notify1(&article);
+}
+// Specifying Multiple Trait Bounds with the + Syntax
+pub fn notify4<T: Summary + Display>(item: &T) {
+  println!("Breaking new! {}", item.summarize());
 }
