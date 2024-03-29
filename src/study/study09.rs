@@ -1,6 +1,8 @@
 use core::panic;
+use rand::Rng;
+use std::cmp::Ordering;
 use std::fs::{self, File};
-use std::io::{self, ErrorKind, Read};
+use std::io::{self, ErrorKind, Read, Write};
 
 // Error Handling
 pub fn _study001() {
@@ -118,4 +120,48 @@ pub fn _study009() {
   change(&mut s);
   let ref1 = &mut s[0..1];
   println!("ref1 = {}", ref1);
+}
+// Creating Custom Types for Validation
+pub fn _study010() {
+  println!("Guess the number!");
+  println!("The secret number is between 1 and 100.");
+  let secret_number = rand::thread_rng().gen_range(1..=100);
+  loop {
+    print!("input your guess> ");
+    io::stdout().flush().unwrap();
+    let mut guess = String::new();
+    io::stdin()
+      .read_line(&mut guess)
+      .expect("Failed to read line");
+    let guess: i32 = match guess.trim().parse() {
+      Ok(num) => num,
+      Err(_) => continue,
+    };
+    if guess < 1 || guess > 100 {
+      println!("The secret number will be between 1 and 100.");
+      continue;
+    }
+    match guess.cmp(&secret_number) {
+      Ordering::Less => println!("Too small!"),
+      Ordering::Greater => println!("Too big!"),
+      Ordering::Equal => {
+        println!("You win!");
+        break;
+      }
+    }
+  }
+}
+pub struct Guess {
+  value: i32,
+}
+impl Guess {
+  pub fn new(value: i32) -> Guess {
+    if value < 1 || value > 100 {
+      panic!("Guess value must be between 1 and 100, got {}.", value);
+    }
+    Guess { value }
+  }
+  pub fn value(&self) -> i32 {
+    self.value
+  }
 }
