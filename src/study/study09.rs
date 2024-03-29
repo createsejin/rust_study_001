@@ -93,11 +93,29 @@ fn read_username_from_file4() -> Result<String, io::Error> {
 fn last_char_of_first_line(text: &str) -> Option<char> {
   text.lines().next()?.chars().last()
 }
+// String, str type, BTW
 pub fn _study008() {
-  let my_str = String::from("hello world");
+  let mut my_str = String::from("hello world");
   let my_im_ref1 = &my_str;
   let my_im_ref2 = &my_str;
   println!("{}", *my_im_ref1);
   println!("{}", *my_im_ref2);
   println!("{}", *my_im_ref1);
+  let my_mut_ref1 = &mut my_str;
+  *my_mut_ref1 += &String::from(" My name is");
+  println!("{}\n", *my_mut_ref1);
+
+  let mut my_str2 = String::from("My String slice2!");
+  let my_str2_mut_ref1 = &mut my_str2;
+  my_str2_mut_ref1.push_str("push push!");
+  println!("{}", my_str2_mut_ref1);
+}
+fn change(some_string: &mut String) {
+  some_string.push_str(", world");
+}
+pub fn _study009() {
+  let mut s = String::from("hello");
+  change(&mut s);
+  let ref1 = &mut s[0..1];
+  println!("ref1 = {}", ref1);
 }
