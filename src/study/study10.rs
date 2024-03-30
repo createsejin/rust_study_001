@@ -308,6 +308,7 @@ fn longest2<'a>(x: &'a str, _y: &str) -> &'a str {
 struct ImportantExcerpt<'a> {
   part: &'a str,
 }
+#[allow(dead_code)]
 impl<'a> ImportantExcerpt<'a> {
   // Lifetime Annotations in Method Definitions
   fn level(&self) -> i32 {

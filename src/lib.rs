@@ -74,16 +74,16 @@ pub fn add(left: usize, right: usize) -> usize {
   left + right
 }
 
-#[cfg(test)]
-mod tests {
-  use super::*;
-
-  #[test]
-  fn it_works() {
-    let result = add(2, 2);
-    assert_eq!(result, 4);
-  }
-}
+// #[cfg(test)]
+// mod tests {
+//   use super::*;
+//
+//   #[test]
+//   fn it_works() {
+//     let result = add(2, 2);
+//     assert_eq!(result, 4);
+//   }
+// }
 
 pub trait Summary {
   fn summarize_author(&self) -> String;
@@ -122,5 +122,34 @@ pub struct Tweet {
 impl Summary for Tweet {
   fn summarize_author(&self) -> String {
     format!("@{}", self.username)
+  }
+}
+
+// Writing Automated Tests
+#[cfg(test)]
+mod tests {
+  use super::study::study11::*;
+  #[test]
+  fn exploration() {
+    let result = 2 + 2;
+    assert_eq!(result, 4);
+  }
+
+  // #[test]
+  // fn another() {
+  //   panic!("Make this test fail");
+  // }
+
+  #[test]
+  fn larger_can_hold_smaller() {
+    let larger = Rectangle {
+      width: 10,
+      height: 6,
+    };
+    let smaller = Rectangle {
+      width: 8,
+      height: 5,
+    };
+    assert!(larger.can_hold(&smaller));
   }
 }

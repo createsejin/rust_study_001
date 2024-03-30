@@ -4,7 +4,7 @@ use std::fs::File;
 
 ///home/bae/Projects/rust_study_001/target/debug/rust_study_001
 fn main() {
-  study::study10::_study010();
+  study::study05::study002();
 }
 
 fn _main_001() -> Result<(), Box<dyn Error>> {
