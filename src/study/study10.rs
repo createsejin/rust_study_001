@@ -238,3 +238,90 @@ impl<T: Display + PartialOrd> Pair<T> {
     }
   }
 }
+
+// Validating References with Lifetimes
+// Preventing Dangling References with Lifetimes
+
+// pub fn _study009() {
+//   let r;
+//   {
+//     let x = 5;
+//     r = &x;
+//   }
+//   println!("r = {}", r);
+// }
+
+// Generic Lifetimes in Functions
+// fn longest(x: &str, y: &str) -> &str {
+//   if x.len() > y.len() {
+//     x
+//   } else {
+//     y
+//   }
+// }
+
+// Lifetime Annotation Syntax
+#[allow(dead_code)]
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+  if x.len() > y.len() {
+    x
+  } else {
+    y
+  }
+}
+pub fn _study009() {
+  let string1 = String::from("abcd");
+  let string2 = "xyz";
+
+  let result = longest(string1.as_str(), string2);
+  println!("The longest string is {}", result);
+}
+pub fn _study010() {
+  let string1 = String::from("long string is long");
+  {
+    let string2 = String::from("xyz");
+    let result = longest(string1.as_str(), string2.as_str());
+    println!("The longest string is {}", result);
+  }
+}
+// pub fn _study011() {
+//   let string1 = String::from("long string is long");
+//   let result;
+//   {
+//     let string2 = String::from("xyz");
+//     result = longest(string1.as_str(), string2.as_str());
+//   }
+//   println!("The longest string is {}", result);
+// }
+
+// Thinking in Terms of Lifetimes
+#[allow(dead_code)]
+fn longest2<'a>(x: &'a str, _y: &str) -> &'a str {
+  x
+}
+// fn longest3<'a>(x: &str, y: &str) -> &'a str {
+//   let result = String::from("really long string");
+//   result.as_str()
+// }
+// Lifetime Annotations in Struct Definitions
+#[allow(dead_code)]
+struct ImportantExcerpt<'a> {
+  part: &'a str,
+}
+pub fn _study011() {
+  let novel = String::from("Call me Ishmael. Some years ago...");
+  let first_sentence = novel.split('.').next().expect("Could not find a '.'");
+  let _i = ImportantExcerpt {
+    part: first_sentence,
+  };
+}
+#[allow(dead_code)]
+fn first_word(s: &str) -> &str {
+  let bytes = s.as_bytes();
+  for (i, &item) in bytes.iter().enumerate() {
+    if item == b' ' {
+      return &s[0..i];
+    }
+  }
+  &s[..]
+}
