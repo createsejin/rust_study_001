@@ -1,3 +1,5 @@
+use std::fmt::{Debug, Display};
+
 pub fn _study001() {
   let number_list = vec![34, 50, 25, 100, 65];
 
@@ -117,7 +119,6 @@ pub fn _study006() {
   // println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
   p3.print();
 }
-use std::fmt::Display;
 
 // Traits: Defining Shared Behavior
 use crate::{NewsArticle, Summary, Tweet};
@@ -143,13 +144,15 @@ pub fn _study007() {
   println!("New article available! {}", article.summarize());
 }
 // Traits as Parameters
-pub fn notify1(item: &impl Summary) {
+fn notify1(item: &impl Summary) {
   println!("Breaking new! {}", item.summarize());
 }
-pub fn notify2<T: Summary>(item: &T) {
+#[allow(dead_code)]
+fn notify2<T: Summary>(item: &T) {
   println!("Breaking new! {}", item.summarize());
 }
-pub fn notify3<T: Summary>(item1: &T, item2: &T) {
+#[allow(dead_code)]
+fn notify3<T: Summary>(item1: &T, item2: &T) {
   println!("Breaking new! {}", item1.summarize());
   println!("Breaking new! {}", item2.summarize());
 }
@@ -166,6 +169,72 @@ pub fn _study008() {
   notify1(&article);
 }
 // Specifying Multiple Trait Bounds with the + Syntax
-pub fn notify4<T: Summary + Display>(item: &T) {
+#[allow(dead_code)]
+fn notify4<T: Summary + Display>(item: &T) {
   println!("Breaking new! {}", item.summarize());
+}
+// Clearer Trait Bounds with where Clauses
+#[allow(dead_code)]
+fn some_func<T, U>(t: &T, u: &U) -> i32
+where
+  T: Display + Clone,
+  U: Clone + Debug,
+{
+  println!("{}", t);
+  println!("{:?}", u);
+  0
+}
+#[allow(dead_code)]
+fn returns_summarizable() -> impl Summary {
+  Tweet {
+    username: String::from("horse_ebooks"),
+    content: String::from("of course, as you probably already know, people"),
+    reply: false,
+    retweet: false,
+  }
+}
+// #[allow(dead_code)]
+// fn returns_summarizable2(switch: bool) -> impl Summary {
+//   if switch {
+//     NewsArticle {
+//       headline: String::from("Penguins win the Stanley Cup Championship!"),
+//       location: String::from("Pittsburgh, PA, USA"),
+//       author: String::from("Iceburgh"),
+//       content: String::from(
+//         "The Pittsburgh Penguins once again are the best \
+//                  hockey team in the NHL.",
+//       ),
+//     }
+//   } else {
+//     Tweet {
+//       username: String::from("horse_ebooks"),
+//       content: String::from("of course, as you probably already know, people"),
+//       reply: false,
+//       retweet: false,
+//     }
+//   }
+// }
+
+#[allow(dead_code)]
+struct Pair<T> {
+  x: T,
+  y: T,
+}
+#[allow(dead_code)]
+impl<T> Pair<T> {
+  fn new(x: T, y: T) -> Self {
+    Self { x, y }
+  }
+}
+#[allow(dead_code)]
+impl<T: Display + PartialOrd> Pair<T> {
+  fn cmp_display(&self) {
+    if self.x > self.y {
+      println!("The largest member is x = {}", self.x);
+    } else if self.x < self.y {
+      println!("The largest member is y = {}", self.y);
+    } else {
+      println!("x and y is same. x = {}, y = {}", self.x, self.y);
+    }
+  }
 }
