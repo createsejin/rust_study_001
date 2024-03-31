@@ -74,6 +74,7 @@ pub fn _study006() {
   let _s = "initial contents2".to_string();
   let _s = String::from("initial contents3");
   let hello = String::from("السلام عليكم");
+  let _c = 'a';
   println!("{hello}");
   let hello = String::from("Dobrý den");
   println!("{hello}");
