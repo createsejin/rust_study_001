@@ -1,10 +1,11 @@
+use rust_study_001::leetcode;
 use rust_study_001::study;
 use std::error::Error;
 use std::fs::File;
 
 ///home/bae/Projects/rust_study_001/target/debug/rust_study_001
 fn main() {
-  study::study05::study002();
+  leetcode::leet001::test001();
 }
 
 fn _main_001() -> Result<(), Box<dyn Error>> {
@@ -16,3 +17,5 @@ fn _main_001() -> Result<(), Box<dyn Error>> {
 fn _main_000() {
   study::study09::_study003();
 }
+
+//

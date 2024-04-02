@@ -77,4 +77,16 @@ mod test_study11 {
   fn greater_than_100() {
     Guess::new(200);
   }
+  // Using Result<T, E> in Tests
+  #[test]
+  fn it_works2() -> Result<(), String> {
+    if 2 + 2 == 4 {
+      Ok(())
+    } else {
+      Err(String::from("two plus two does not equal four"))
+    }
+  }
+
+  // 11.2. Controlling How Tests Are Run
+  //
 }
