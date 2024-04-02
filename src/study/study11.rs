@@ -12,9 +12,15 @@ impl Rectangle {
   }
 }
 
+//@#test.imp
 pub fn add_two(a: i32) -> i32 {
   a + 2
 }
+#[allow(dead_code)]
+fn internal_adder(a: i32, b: i32) -> i32 {
+  a + b
+}
+
 pub fn greeting(name: &str) -> String {
   format!("Hello {}!", name)
   // String::from("Hello! {}")
@@ -41,8 +47,14 @@ impl Guess {
   }
 }
 
+#[allow(dead_code)]
+fn prints_and_returns_10(a: i32) -> i32 {
+  println!("I got the value {}", a);
+  10
+}
+
 #[cfg(test)]
-mod test_study11 {
+mod test_study11_001 {
   use super::*;
 
   #[test]
@@ -57,10 +69,12 @@ mod test_study11 {
     };
     assert!(!smaller.can_hold(&larger));
   }
+
   #[test]
   fn it_adds_two() {
     assert_eq!(4, add_two(2));
   }
+
   // Adding Custom Failure Messages
   #[test]
   fn greeting_contains_name() {
@@ -77,6 +91,7 @@ mod test_study11 {
   fn greater_than_100() {
     Guess::new(200);
   }
+
   // Using Result<T, E> in Tests
   #[test]
   fn it_works2() -> Result<(), String> {
@@ -88,5 +103,44 @@ mod test_study11 {
   }
 
   // 11.2. Controlling How Tests Are Run
-  //
+  // Showing Function Output
+  #[test]
+  fn this_test_will_pass() {
+    let value = prints_and_returns_10(4);
+    assert_eq!(10, value);
+  }
+  #[test]
+  // cargo test -- --ignored => test ignored only
+  // cargo test -- --include-ignored => test all
+  #[ignore]
+  fn this_test_will_fail() {
+    let value = prints_and_returns_10(8);
+    assert_eq!(5, value);
+  }
+
+  #[test]
+  fn add_two_and_two() {
+    assert_eq!(4, add_two(2));
+  }
+  #[test]
+  fn add_three_and_two() {
+    assert_eq!(5, add_two(3));
+  }
+  #[test]
+  fn one_hundred() {
+    assert_eq!(102, add_two(100));
+  }
+}
+
+// Test Organization
+
+#[cfg(test)]
+mod test_study11_002 {
+  use super::*;
+
+  #[test]
+  fn internal() {
+    assert_eq!(4, internal_adder(2, 2));
+  }
+  //@#test.test
 }

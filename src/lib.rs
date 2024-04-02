@@ -128,6 +128,8 @@ impl Summary for Tweet {
 // Writing Automated Tests
 #[cfg(test)]
 mod tests {
+  mod integration_test;
+
   use super::study::study11::*;
   #[test]
   fn exploration() {
