@@ -1,5 +1,9 @@
 use core::panic;
 
+pub fn add(left: usize, right: usize) -> usize {
+  left + right
+}
+
 // Writing Automated Tests
 #[derive(Debug)]
 pub struct Rectangle {
@@ -12,7 +16,6 @@ impl Rectangle {
   }
 }
 
-//@#test.imp
 pub fn add_two(a: i32) -> i32 {
   a + 2
 }
@@ -25,6 +28,7 @@ pub fn greeting(name: &str) -> String {
   format!("Hello {}!", name)
   // String::from("Hello! {}")
 }
+
 // Checking for Panics with should_panic
 #[allow(dead_code)]
 pub struct Guess {
@@ -54,7 +58,7 @@ fn prints_and_returns_10(a: i32) -> i32 {
 }
 
 #[cfg(test)]
-mod test_study11_001 {
+mod test_unit_001 {
   use super::*;
 
   #[test]
@@ -128,19 +132,7 @@ mod test_study11_001 {
   }
   #[test]
   fn one_hundred() {
+    // assert_eq!(102, add_two(100));
     assert_eq!(102, add_two(100));
   }
-}
-
-// Test Organization
-
-#[cfg(test)]
-mod test_study11_002 {
-  use super::*;
-
-  #[test]
-  fn internal() {
-    assert_eq!(4, internal_adder(2, 2));
-  }
-  //@#test.test
 }
