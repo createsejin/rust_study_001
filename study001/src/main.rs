@@ -5,7 +5,12 @@ use std::fs::File;
 
 ///home/bae/Projects/rust_study_001/target/debug/rust_study_001
 fn main() {
-  leetcode::leet001::test001();
+  // leetcode::leet001::test001();
+  let content = "\
+Rust:
+safe, fast, productive.
+Pick three.";
+  println!("{}", content);
 }
 
 fn _main_001() -> Result<(), Box<dyn Error>> {

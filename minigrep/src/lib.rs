@@ -26,7 +26,6 @@ impl Config {
 
     Ok(Self { query, file_path })
   }
-
   // pub fn get_query(&self) -> &str {
   //   &self.query
   // }
@@ -40,4 +39,33 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
 
   println!("With text:\n{contents}");
   Ok(())
+}
+
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+  let mut result: Vec<&'a str> = Vec::new();
+  for line in contents.lines() {
+    if line.contains(query) {
+      result.push(line);
+    }
+  }
+  result
+}
+
+#[cfg(test)]
+mod tests {
+  use super::*;
+
+  #[test]
+  fn one_result() {
+    let query = "duct";
+    let content = "\
+Rust:
+safe, fast, productive.
+Pick three.
+doduct do do what?";
+    assert_eq!(
+      vec!["safe, fast, productive.", "doduct do do what?"],
+      search(query, content)
+    );
+  }
 }
