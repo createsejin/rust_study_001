@@ -35,6 +35,7 @@ nnoremap <silent> Þ <Nop>
 nnoremap <silent>  <Cmd>lua require("which-key").show("\23", {mode = "n", auto = true})
 tnoremap  
 nnoremap  <Cmd> noh 
+<<<<<<< HEAD
 nnoremap <silent>  fÞ <Nop>
 nnoremap <silent>  dÞ <Nop>
 nnoremap <silent>  wÞ <Nop>
@@ -45,13 +46,28 @@ nnoremap <silent>  pÞ <Nop>
 nnoremap <silent>  tÞ <Nop>
 nnoremap <silent>  rcÞ <Nop>
 nnoremap <silent>  rÞ <Nop>
+=======
+nnoremap <silent>  gÞ <Nop>
+nnoremap <silent>  wÞ <Nop>
+nnoremap <silent>  tÞ <Nop>
+nnoremap <silent>  mÞ <Nop>
+nnoremap <silent>  dÞ <Nop>
+nnoremap <silent>  pÞ <Nop>
+nnoremap <silent>  rcÞ <Nop>
+nnoremap <silent>  rÞ <Nop>
+nnoremap <silent>  fÞ <Nop>
+nnoremap <silent>  cÞ <Nop>
+>>>>>>> dc7ea776ceff210ee191749519bf4727f75fbe02
 nnoremap <silent>  Þ <Nop>
 nnoremap <silent>   <Cmd>lua require("which-key").show(" ", {mode = "n", auto = true})
 xnoremap <silent>  cÞ <Nop>
 xnoremap <silent>  Þ <Nop>
 xnoremap <silent>   <Cmd>lua require("which-key").show(" ", {mode = "v", auto = true})
 nnoremap  B <Cmd> DapToggleBreakpoint 
+<<<<<<< HEAD
 nnoremap  gt <Cmd> Telescope git_status 
+=======
+>>>>>>> dc7ea776ceff210ee191749519bf4727f75fbe02
 nnoremap  fw <Cmd> Telescope live_grep 
 nnoremap  cm <Cmd> Telescope git_commits 
 nnoremap  fa <Cmd> Telescope find_files follow=true no_ignore=true hidden=true 
@@ -63,6 +79,7 @@ nnoremap  th <Cmd> Telescope themes 
 nnoremap  fh <Cmd> Telescope help_tags 
 nnoremap  pt <Cmd> Telescope terms 
 nnoremap  fb <Cmd> Telescope buffers 
+<<<<<<< HEAD
 nnoremap  e <Cmd> NvimTreeFocus 
 vnoremap  / <Cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())
 nnoremap  n <Cmd> set nu! 
@@ -77,7 +94,24 @@ nnoremap  wr <Cmd> SessionRestore 
 nnoremap  ws <Cmd> SessionSave 
 nnoremap  cg <Cmd> Copilot enable 
 nnoremap <silent> !iÞ <Nop>
+=======
+nnoremap  gt <Cmd> Telescope git_status 
+vnoremap  / <Cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())
+nnoremap  e <Cmd> NvimTreeFocus 
+nnoremap  ct <Cmd> CopilotChatToggle 
+vnoremap  ct <Cmd> CopilotChatToggle 
+vnoremap  cf <Cmd> CopilotChatFix 
+nnoremap  ws <Cmd> SessionSave 
+nnoremap  cg <Cmd> Copilot enable 
+nnoremap  cb <Cmd> Copilot disable 
+nnoremap  wr <Cmd> SessionRestore 
+nnoremap  rn <Cmd> set rnu! 
+nnoremap  n <Cmd> set nu! 
+nnoremap  b <Cmd> enew 
+nnoremap  ch <Cmd> NvCheatsheet 
+>>>>>>> dc7ea776ceff210ee191749519bf4727f75fbe02
 nnoremap <silent> !aÞ <Nop>
+nnoremap <silent> !iÞ <Nop>
 nnoremap <silent> !Þ <Nop>
 nnoremap <silent> ! <Cmd>lua require("which-key").show("!", {mode = "n", auto = true})
 nnoremap <silent> " <Cmd>lua require("which-key").show("\"", {mode = "n", auto = true})
@@ -86,13 +120,13 @@ xnoremap # y?\V"
 nnoremap & :&&
 nnoremap <silent> ' <Cmd>lua require("which-key").show("'", {mode = "n", auto = true})
 xnoremap * y/\V"
-nnoremap <silent> <iÞ <Nop>
 nnoremap <silent> <aÞ <Nop>
+nnoremap <silent> <iÞ <Nop>
 nnoremap <silent> <Þ <Nop>
 nnoremap <silent> < <Cmd>lua require("which-key").show("<", {mode = "n", auto = true})
 vnoremap < <gv
-nnoremap <silent> >iÞ <Nop>
 nnoremap <silent> >aÞ <Nop>
+nnoremap <silent> >iÞ <Nop>
 nnoremap <silent> >Þ <Nop>
 nnoremap <silent> > <Cmd>lua require("which-key").show(">", {mode = "n", auto = true})
 vnoremap > >gv
@@ -102,6 +136,7 @@ nnoremap <silent> [ <Cmd>lua require("which-key").show("[", {mode = "n", auto = 
 nnoremap <silent> ]Þ <Nop>
 nnoremap <silent> ] <Cmd>lua require("which-key").show("]", {mode = "n", auto = true})
 nnoremap <silent> ` <Cmd>lua require("which-key").show("`", {mode = "n", auto = true})
+<<<<<<< HEAD
 nnoremap <silent> ciÞ <Nop>
 nnoremap <silent> caÞ <Nop>
 nnoremap <silent> cÞ <Nop>
@@ -120,31 +155,63 @@ nnoremap <silent> guiÞ <Nop>
 nnoremap <silent> guaÞ <Nop>
 nnoremap <silent> guÞ <Nop>
 nnoremap <silent> gUiÞ <Nop>
+=======
+nnoremap <silent> cÞ <Nop>
+nnoremap <silent> c <Cmd>lua require("which-key").show("c", {mode = "n", auto = true})
+nnoremap <silent> caÞ <Nop>
+nnoremap <silent> ciÞ <Nop>
+nnoremap <silent> dÞ <Nop>
+nnoremap <silent> d <Cmd>lua require("which-key").show("d", {mode = "n", auto = true})
+nnoremap <silent> daÞ <Nop>
+nnoremap <silent> da <Cmd>lua require("which-key").show("da", {mode = "n", auto = true})
+nnoremap <silent> diÞ <Nop>
+nnoremap <silent> gÞ <Nop>
+nnoremap <silent> g <Cmd>lua require("which-key").show("g", {mode = "n", auto = true})
+>>>>>>> dc7ea776ceff210ee191749519bf4727f75fbe02
 nnoremap <silent> gUaÞ <Nop>
+nnoremap <silent> gUiÞ <Nop>
 nnoremap <silent> gUÞ <Nop>
+<<<<<<< HEAD
 nnoremap <silent> g~iÞ <Nop>
 nnoremap <silent> g~aÞ <Nop>
 nnoremap <silent> g~Þ <Nop>
+=======
+nnoremap <silent> g~aÞ <Nop>
+nnoremap <silent> g~iÞ <Nop>
+nnoremap <silent> g~Þ <Nop>
+nnoremap <silent> guaÞ <Nop>
+nnoremap <silent> guiÞ <Nop>
+nnoremap <silent> guÞ <Nop>
+>>>>>>> dc7ea776ceff210ee191749519bf4727f75fbe02
 xnoremap <silent> gÞ <Nop>
 xnoremap <silent> g <Cmd>lua require("which-key").show("g", {mode = "v", auto = true})
-xnoremap <expr> j v:count || mode(1)[0:1] == "no" ? "j" : "gj"
 nnoremap <expr> j v:count || mode(1)[0:1] == "no" ? "j" : "gj"
-xnoremap <expr> k v:count || mode(1)[0:1] == "no" ? "k" : "gk"
+xnoremap <expr> j v:count || mode(1)[0:1] == "no" ? "j" : "gj"
 nnoremap <expr> k v:count || mode(1)[0:1] == "no" ? "k" : "gk"
+xnoremap <expr> k v:count || mode(1)[0:1] == "no" ? "k" : "gk"
 xnoremap <silent> p p:let @+=@0:let @"=@0
+<<<<<<< HEAD
 nnoremap <silent> viÞ <Nop>
 nnoremap <silent> vaÞ <Nop>
 nnoremap <silent> vÞ <Nop>
 nnoremap <silent> v <Cmd>lua require("which-key").show("v", {mode = "n", auto = true})
 nnoremap <silent> yiÞ <Nop>
+=======
+nnoremap <silent> vÞ <Nop>
+nnoremap <silent> v <Cmd>lua require("which-key").show("v", {mode = "n", auto = true})
+nnoremap <silent> vaÞ <Nop>
+nnoremap <silent> viÞ <Nop>
+>>>>>>> dc7ea776ceff210ee191749519bf4727f75fbe02
 nnoremap <silent> yaÞ <Nop>
+nnoremap <silent> yiÞ <Nop>
 nnoremap <silent> yÞ <Nop>
 nnoremap <silent> y <Cmd>lua require("which-key").show("y", {mode = "n", auto = true})
 nnoremap <silent> zÞ <Nop>
 nnoremap <silent> z <Cmd>lua require("which-key").show("z", {mode = "n", auto = true})
-nnoremap <silent> zfiÞ <Nop>
 nnoremap <silent> zfaÞ <Nop>
+nnoremap <silent> zfiÞ <Nop>
 nnoremap <silent> zfÞ <Nop>
+<<<<<<< HEAD
 xnoremap <Plug>(comment_toggle_blockwise_visual) <Cmd>lua require("Comment.api").locked("toggle.blockwise")(vim.fn.visualmode())
 xnoremap <Plug>(comment_toggle_linewise_visual) <Cmd>lua require("Comment.api").locked("toggle.linewise")(vim.fn.visualmode())
 nnoremap <silent> <C-W>Þ <Nop>
@@ -157,13 +224,36 @@ nnoremap <silent> <SNR> <Cmd>lua require("which-key").show("��R", {mode = "n",
 nnoremap <SNR>69_: :=v:count ? v:count : ''
 nnoremap <F5> <Cmd> DapContinue 
 nnoremap <C-N> <Cmd> NvimTreeToggle 
+=======
+nnoremap <silent> <SNR>70_Þ <Nop>
+nnoremap <silent> <SNR>70Þ <Nop>
+nnoremap <silent> <SNR>7Þ <Nop>
+nnoremap <silent> <SNR>Þ <Nop>
+nnoremap <silent> <SNR> <Cmd>lua require("which-key").show("��R", {mode = "n", auto = true})
+nnoremap <SNR>70_: :=v:count ? v:count : ''
+nnoremap <silent> <C-W>Þ <Nop>
+nnoremap <silent> <C-W> <Cmd>lua require("which-key").show("\23", {mode = "n", auto = true})
+nnoremap <F5> <Cmd> DapContinue 
+nnoremap <C-N> <Cmd> NvimTreeToggle 
+tnoremap <C-H> h
+tnoremap <C-L> l
+tnoremap <C-J> j
+tnoremap <C-K> k
+nnoremap <C-H> h
+nnoremap <expr> <Up> v:count || mode(1)[0:1] == "no" ? "k" : "gk"
+nnoremap <expr> <Down> v:count || mode(1)[0:1] == "no" ? "j" : "gj"
+>>>>>>> dc7ea776ceff210ee191749519bf4727f75fbe02
 nnoremap <C-C> <Cmd> %y+ 
 nnoremap <C-K> k
 nnoremap <C-S> <Cmd> w 
 nnoremap <C-J> j
+<<<<<<< HEAD
 nnoremap <expr> <Up> v:count || mode(1)[0:1] == "no" ? "k" : "gk"
 nnoremap <expr> <Down> v:count || mode(1)[0:1] == "no" ? "j" : "gj"
 nnoremap <C-H> h
+=======
+tnoremap <C-X> 
+>>>>>>> dc7ea776ceff210ee191749519bf4727f75fbe02
 vnoremap <expr> <Down> v:count || mode(1)[0:1] == "no" ? "j" : "gj"
 vnoremap <expr> <Up> v:count || mode(1)[0:1] == "no" ? "k" : "gk"
 tnoremap <C-X> 
@@ -197,10 +287,17 @@ set noloadplugins
 set mouse=a
 set packpath=/usr/share/nvim/runtime
 set noruler
+<<<<<<< HEAD
 set runtimepath=~/.config/nvim,~/.local/share/nvim/site,~/.local/share/nvim/lazy/lazy.nvim,~/.local/share/nvim/lazy/Comment.nvim,~/.local/share/nvim/lazy/which-key.nvim,~/.local/share/nvim/lazy/rust-tools.nvim,~/.local/share/nvim/lazy/crates.nvim,~/.local/share/nvim/lazy/rust.vim,~/.local/share/nvim/lazy/vim-fugitive,~/.local/share/nvim/lazy/nvim-colorizer.lua,~/.local/share/nvim/lazy/indent-blankline.nvim,~/.local/share/nvim/lazy/gitsigns.nvim,~/.local/share/nvim/lazy/cmp-path,~/.local/share/nvim/lazy/cmp-buffer,~/.local/share/nvim/lazy/cmp-nvim-lsp,~/.local/share/nvim/lazy/cmp-nvim-lua,~/.local/share/nvim/lazy/cmp_luasnip,~/.local/share/nvim/lazy/nvim-autopairs,~/.local/share/nvim/lazy/friendly-snippets,~/.local/share/nvim/lazy/LuaSnip,~/.local/share/nvim/lazy/nvim-cmp,~/.local/share/nvim/lazy/null-ls.nvim,~/.local/share/nvim/lazy/nvim-nio,~/.local/share/nvim/lazy/nvim-dap-ui,~/.local/share/nvim/lazy/dressing.nvim,~/.local/share/nvim/lazy/nvim-lspconfig,~/.local/share/nvim/lazy/mason-lspconfig.nvim,~/.local/share/nvim/lazy/nvim-dap,~/.local/share/nvim/lazy/mason.nvim,~/.local/share/nvim/lazy/mason-nvim-dap.nvim,~/.local/share/nvim/lazy/nvim-web-devicons,~/.local/share/nvim/lazy/trouble.nvim,~/.local/share/nvim/lazy/alpha-nvim,~/.local/share/nvim/lazy/nvim-treesitter,~/.local/share/nvim/lazy/telescope.nvim,~/.local/share/nvim/lazy/auto-session,~/.local/share/nvim/lazy/plenary.nvim,~/.local/share/nvim/lazy/copilot.lua,~/.local/share/nvim/lazy/CopilotChat.nvim,~/.local/share/nvim/lazy/vim-rainbow,~/.local/share/nvim/lazy/netrw.nvim,~/.local/share/nvim/lazy/base46,~/.local/share/nvim/lazy/nvterm,~/.local/share/nvim/lazy/suda.vim,~/.local/share/nvim/lazy/nvim-treesitter-context,~/.local/share/nvim/lazy/copilot.vim,~/.local/share/nvim/lazy/ui,/usr/share/nvim/runtime,/usr/lib/nvim,~/.local/state/nvim/lazy/readme,~/.local/share/nvim/lazy/rust.vim/after,~/.local/share/nvim/lazy/cmp-path/after,~/.local/share/nvim/lazy/cmp-buffer/after,~/.local/share/nvim/lazy/cmp-nvim-lsp/after,~/.local/share/nvim/lazy/cmp-nvim-lua/after,~/.local/share/nvim/lazy/cmp_luasnip/after
 set scrolloff=9
 set shiftwidth=2
 set shortmess=fIxistloOFTn
+=======
+set runtimepath=~/.config/nvim,~/.local/share/nvim/site,~/.local/share/nvim/lazy/lazy.nvim,~/.local/share/nvim/lazy/rust-tools.nvim,~/.local/share/nvim/lazy/crates.nvim,~/.local/share/nvim/lazy/rust.vim,~/.local/share/nvim/lazy/vim-fugitive,~/.local/share/nvim/lazy/nvim-colorizer.lua,~/.local/share/nvim/lazy/indent-blankline.nvim,~/.local/share/nvim/lazy/gitsigns.nvim,~/.local/share/nvim/lazy/cmp-path,~/.local/share/nvim/lazy/cmp-buffer,~/.local/share/nvim/lazy/cmp-nvim-lsp,~/.local/share/nvim/lazy/cmp-nvim-lua,~/.local/share/nvim/lazy/cmp_luasnip,~/.local/share/nvim/lazy/nvim-autopairs,~/.local/share/nvim/lazy/friendly-snippets,~/.local/share/nvim/lazy/LuaSnip,~/.local/share/nvim/lazy/nvim-cmp,~/.local/share/nvim/lazy/which-key.nvim,~/.local/share/nvim/lazy/nvim-nio,~/.local/share/nvim/lazy/nvim-dap-ui,~/.local/share/nvim/lazy/nvim-web-devicons,~/.local/share/nvim/lazy/trouble.nvim,~/.local/share/nvim/lazy/nvim-lspconfig,~/.local/share/nvim/lazy/mason-lspconfig.nvim,~/.local/share/nvim/lazy/null-ls.nvim,~/.local/share/nvim/lazy/nvim-dap,~/.local/share/nvim/lazy/mason.nvim,~/.local/share/nvim/lazy/mason-nvim-dap.nvim,~/.local/share/nvim/lazy/dressing.nvim,~/.local/share/nvim/lazy/alpha-nvim,~/.local/share/nvim/lazy/netrw.nvim,~/.local/share/nvim/lazy/vim-rainbow,~/.local/share/nvim/lazy/base46,~/.local/share/nvim/lazy/nvterm,~/.local/share/nvim/lazy/nvim-treesitter,~/.local/share/nvim/lazy/telescope.nvim,~/.local/share/nvim/lazy/auto-session,~/.local/share/nvim/lazy/copilot.vim,~/.local/share/nvim/lazy/suda.vim,~/.local/share/nvim/lazy/plenary.nvim,~/.local/share/nvim/lazy/copilot.lua,~/.local/share/nvim/lazy/CopilotChat.nvim,~/.local/share/nvim/lazy/nvim-treesitter-context,~/.local/share/nvim/lazy/ui,/usr/share/nvim/runtime,/usr/lib/nvim,~/.local/state/nvim/lazy/readme,~/.local/share/nvim/lazy/rust.vim/after,~/.local/share/nvim/lazy/cmp-path/after,~/.local/share/nvim/lazy/cmp-buffer/after,~/.local/share/nvim/lazy/cmp-nvim-lsp/after,~/.local/share/nvim/lazy/cmp-nvim-lua/after,~/.local/share/nvim/lazy/cmp_luasnip/after
+set scrolloff=9
+set shiftwidth=2
+set shortmess=liTOnofsxItF
+>>>>>>> dc7ea776ceff210ee191749519bf4727f75fbe02
 set noshowmode
 set showtabline=2
 set smartcase
