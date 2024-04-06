@@ -1,13 +1,17 @@
 use core::panic;
 use std::env;
 use std::fs;
+use std::process;
 
 fn main() {
   let args: Vec<String> = env::args().collect();
   // dbg!(args);
 
   // let config = Config::new(&args);
-  let config = Config::build(&args).unwrap();
+  let config = Config::build(&args).unwrap_or_else(|err| {
+    println!("Problem parsing arguemnts: {err}");
+    process::exit(1);
+  });
 
   println!(r#"Searching for '{}'"#, config.query);
   println!(r#"In file "{}""#, config.file_path);
