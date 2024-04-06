@@ -1,3 +1,4 @@
+use core::panic;
 use std::env;
 use std::fs;
 
@@ -22,6 +23,9 @@ struct Config {
 }
 impl Config {
   fn new(args: &[String]) -> Self {
+    if args.len() != 3 {
+      panic!("arguemnts number must be 2!");
+    }
     let query = args[1].clone();
     let file_path = args[2].clone();
 
