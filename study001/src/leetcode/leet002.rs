@@ -12,29 +12,62 @@ impl Solution {
     sandwiches: &mut VecDeque<i32>,
   ) -> i32 {
     assert_eq!(students.len(), sandwiches.len());
-    println!("array size is equal");
 
-    // self.confirm_pref(students, sandwiches);
-    0
+    let mut limit = 100;
+
+    loop {
+      self.confirm_pref(students, sandwiches);
+      if self.check_all_same_pref(students, sandwiches) {
+        let remain = students.len().try_into().unwrap();
+        println!("The remain {} students cannot eat sandwiches!", remain);
+        return remain;
+      }
+      limit -= 1;
+      if limit == 0 {
+        return -1;
+      }
+    }
   }
 
-  #[allow(dead_code)]
-  fn confirm_pref(&self, students: &mut VecDeque<i32>, sandwiches: &mut VecDeque<i32>) {
+  pub fn confirm_pref(
+    &self,
+    students: &mut VecDeque<i32>,
+    sandwiches: &mut VecDeque<i32>,
+  ) {
     let front_student = students.pop_front().unwrap();
-    let top_sandwich = sandwiches.pop_front().unwrap();
+    let top_sandwich = *sandwiches.front().unwrap();
     if front_student == top_sandwich {
+      let _ = sandwiches.pop_front().unwrap();
       println!(
         "Front student takes the top sandwich and leaves the line making \
       students = {:?} and sandwiches = {:?}",
         students, sandwiches
       );
     } else {
+      students.push_back(front_student);
       println!(
         "Front student leaves the top sandwich and returns to the end \
-      of the line making students = {:?}",
-        students
+      of the line making students = {:?} and sandwiches = {:?}",
+        students, sandwiches
       );
     }
+  }
+
+  pub fn check_all_same_pref(
+    &self,
+    students: &VecDeque<i32>,
+    sandwiches: &VecDeque<i32>,
+  ) -> bool {
+    let front_student = *students.front().unwrap();
+    let top_sandwich = *sandwiches.front().unwrap();
+    let num_stu: usize = students.len();
+    let same_pref = VecDeque::from(vec![front_student; num_stu]);
+    if same_pref == *students {
+      if top_sandwich != front_student {
+        return true;
+      }
+    }
+    false
   }
 }
 
@@ -98,6 +131,7 @@ pub fn test003() {
   println!("input students array and sandwiches array like follow:");
   println!("students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]");
   // students = [1,1,1,0,1], sandwiches = [1,0,0,1,1]
+  // students = [0,0,0,1,0], sandwiches = [0,1,1,0,0]
   // students = [1,1,0,0], sandwiches = [0,1,0,1]
   let input = get_input(String::from("> "));
 
@@ -106,8 +140,42 @@ pub fn test003() {
   let mut sandwiches_vec_deque = res.1;
   println!("students_vec_deque = {:?}", students_vec_deque);
   println!("sandwiches_vec_deque = {:?}", sandwiches_vec_deque);
+
   let solution = Solution {};
-  solution.count_students(&mut students_vec_deque, &mut sandwiches_vec_deque);
+
+  loop {
+    let input = get_input("> ".to_string());
+    if input == "q".to_string() {
+      break;
+    }
+    solution.confirm_pref(&mut students_vec_deque, &mut sandwiches_vec_deque);
+    if solution.check_all_same_pref(&students_vec_deque, &sandwiches_vec_deque) {
+      println!("The remain students cannot eat sandwiches!");
+      break;
+    }
+  }
+  println!("program stop");
+}
+
+pub fn test004() {
+  println!("input students array and sandwiches array like follow:");
+  println!("students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]");
+  // students = [1,1,1,0,1], sandwiches = [1,0,0,1,1]
+  // students = [0,0,0,1,0], sandwiches = [0,1,1,0,0]
+  // students = [1,1,0,0], sandwiches = [0,1,0,1]
+  let input = get_input(String::from("> "));
+
+  let res = parsing_input(input);
+  let mut students_vec_deque = res.0;
+  let mut sandwiches_vec_deque = res.1;
+  println!("students_vec_deque = {:?}", students_vec_deque);
+  println!("sandwiches_vec_deque = {:?}", sandwiches_vec_deque);
+
+  let solution = Solution {};
+
+  let remain =
+    solution.count_students(&mut students_vec_deque, &mut sandwiches_vec_deque);
+  println!("unable to eat students = {}", remain);
 }
 
 fn parsing_input(input: String) -> (VecDeque<i32>, VecDeque<i32>) {
