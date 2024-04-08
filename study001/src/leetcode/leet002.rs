@@ -33,6 +33,7 @@ pub fn test002() {
   println!("input students array and sandwiches array like follow:");
   println!("students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]");
   // students = [1,1,1,0,1], sandwiches = [1,0,0,1,1]
+  // students = [1,1,0,0], sandwiches = [0,1,0,1]
   let input = get_input(String::from("> "));
 
   let res = parsing_input(input);
@@ -40,6 +41,9 @@ pub fn test002() {
   let sandwiches_vec = res.1;
   println!("students_vec = {:?}", students_vec);
   println!("sandwiches_vec = {:?}", sandwiches_vec);
+  // check two array size is same
+  assert_eq!(students_vec.len(), sandwiches_vec.len());
+  println!("array size assertion passed.");
 }
 
 fn parsing_input(input: String) -> (Vec<i32>, Vec<i32>) {
