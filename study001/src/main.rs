@@ -5,7 +5,7 @@ use std::fs::File;
 
 ///home/bae/Projects/rust_study_001/target/debug/rust_study_001
 fn main() {
-  leetcode::leet002::test002();
+  leetcode::leet002::test003();
 }
 
 fn _main_001() -> Result<(), Box<dyn Error>> {
