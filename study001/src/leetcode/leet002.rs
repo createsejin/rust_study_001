@@ -1,3 +1,5 @@
+use std::io::{self, Write};
+
 // struct Solution;
 //
 // impl Solution {
@@ -25,6 +27,50 @@ pub fn test001() {
   let sandwiches_vec = remove_extra_chars(&parts[sandwiche_index..], sandwiche_str);
   let sandwiches_vec = convert_str_vec_to_i32_vec(sandwiches_vec);
   println!("{:?}", sandwiches_vec);
+}
+
+pub fn test002() {
+  println!("input students array and sandwiches array like follow:");
+  println!("students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]");
+  // students = [1,1,1,0,1], sandwiches = [1,0,0,1,1]
+  let input = get_input(String::from("> "));
+
+  let res = parsing_input(input);
+  let students_vec = res.0;
+  let sandwiches_vec = res.1;
+  println!("students_vec = {:?}", students_vec);
+  println!("sandwiches_vec = {:?}", sandwiches_vec);
+}
+
+fn parsing_input(input: String) -> (Vec<i32>, Vec<i32>) {
+  let students_str = "students = [";
+  let sandwiche_str = " sandwiches = [";
+  let parts: Vec<&str> = input.split(',').collect();
+
+  let mut sandwiche_index: usize = 0;
+
+  for (index, line) in parts.iter().enumerate() {
+    let line = *line;
+    if line.find("sandwiches") != None {
+      sandwiche_index = index;
+    }
+  }
+  let students_vec = remove_extra_chars(&parts[0..sandwiche_index], students_str);
+  let students_vec = convert_str_vec_to_i32_vec(students_vec);
+  let sandwiches_vec = remove_extra_chars(&parts[sandwiche_index..], sandwiche_str);
+  let sandwiches_vec = convert_str_vec_to_i32_vec(sandwiches_vec);
+  (students_vec, sandwiches_vec)
+}
+
+fn get_input(prompt: String) -> String {
+  print!("{}", prompt);
+  io::stdout().flush().unwrap();
+
+  let mut input = String::new();
+  io::stdin()
+    .read_line(&mut input)
+    .expect("Failed to read line");
+  input.trim().to_string()
 }
 
 fn convert_str_vec_to_i32_vec(input: Vec<String>) -> Vec<i32> {
