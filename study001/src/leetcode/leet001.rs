@@ -3,7 +3,7 @@ struct Solution;
 impl Solution {
   pub fn length_of_last_word(s: &str) -> i32 {
     let v: Vec<&str> = s.rsplit(' ').collect();
-    let mut words: Vec<&str> = vec![];
+    let mut words: Vec<&str> = Vec::new();
     for item in &v {
       if *item == "" {
         continue;
