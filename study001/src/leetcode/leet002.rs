@@ -3,39 +3,25 @@ use std::{
   io::{self, Write},
 };
 
-struct Solution {}
+struct Solution;
 
 impl Solution {
-  pub fn count_students(
-    &self,
-    students: &mut Vec<i32>,
-    sandwiches: &mut Vec<i32>,
-  ) -> i32 {
+  pub fn count_students(students: Vec<i32>, sandwiches: Vec<i32>) -> i32 {
     assert_eq!(students.len(), sandwiches.len());
-    let mut students: VecDeque<i32> = students.clone().into_iter().collect();
-    let mut sandwiches: VecDeque<i32> = sandwiches.clone().into_iter().collect();
+    let mut students: VecDeque<i32> = students.into_iter().collect();
+    let mut sandwiches: VecDeque<i32> = sandwiches.into_iter().collect();
 
-    // loot limit
-    let mut limit = 150;
     loop {
-      self.confirm_pref(&mut students, &mut sandwiches);
-      if self.check_all_same_pref(&students, &sandwiches) {
+      Solution::confirm_pref(&mut students, &mut sandwiches);
+      if Solution::check_all_same_pref(&students, &sandwiches) {
         let remain = students.len().try_into().unwrap();
         println!("The remain {} students cannot eat sandwiches!", remain);
         return remain;
       }
-      limit -= 1;
-      if limit == 0 {
-        return -1;
-      }
     }
   }
 
-  pub fn confirm_pref(
-    &self,
-    students: &mut VecDeque<i32>,
-    sandwiches: &mut VecDeque<i32>,
-  ) {
+  pub fn confirm_pref(students: &mut VecDeque<i32>, sandwiches: &mut VecDeque<i32>) {
     let front_student = students.pop_front().unwrap();
     let top_sandwich = *sandwiches.front().unwrap();
     if front_student == top_sandwich {
@@ -56,7 +42,6 @@ impl Solution {
   }
 
   pub fn check_all_same_pref(
-    &self,
     students: &VecDeque<i32>,
     sandwiches: &VecDeque<i32>,
   ) -> bool {
@@ -153,15 +138,13 @@ pub fn test003() {
   let mut sandwiches_vec_deque: VecDeque<i32> =
     sandwiches_vec.clone().into_iter().collect();
 
-  let solution = Solution {};
-
   loop {
     let input = get_input("> ".to_string());
     if input == "q".to_string() {
       break;
     }
-    solution.confirm_pref(&mut students_vec_deque, &mut sandwiches_vec_deque);
-    if solution.check_all_same_pref(&students_vec_deque, &sandwiches_vec_deque) {
+    Solution::confirm_pref(&mut students_vec_deque, &mut sandwiches_vec_deque);
+    if Solution::check_all_same_pref(&students_vec_deque, &sandwiches_vec_deque) {
       println!("The remain students cannot eat sandwiches!");
       break;
     }
@@ -175,17 +158,16 @@ pub fn test004() {
   // students = [1,1,1,0,1], sandwiches = [1,0,0,1,1]
   // students = [0,0,0,1,0], sandwiches = [0,1,1,0,0]
   // students = [1,1,0,0], sandwiches = [0,1,0,1]
+  // students = [1,0,1,1,0,0,1,0,1,1,0,1,0,0,0,1,1,0,0,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,1,0,0,0,0,1,0,1,0,0,1,0,0,0,1,1,1,0,1,1,1,1,0,1,1,0,0,1,0], sandwiches = [0,1,1,0,1,0,1,0,1,1,0,1,0,0,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0,1,0,1,1,1,1,1,0,0,1,1,1,0,1,1,1,0,1,0,1,1,0,0,0,0,1,0,0,1,0,1,1,0]
   let input = get_input(String::from("> "));
 
   let res = parsing_input(input);
-  let mut students_vec = res.0;
-  let mut sandwiches_vec = res.1;
+  let students_vec = res.0;
+  let sandwiches_vec = res.1;
   println!("students_vec = {:?}", students_vec);
   println!("sandwiches_vec = {:?}", sandwiches_vec);
 
-  let solution = Solution {};
-
-  let remain = solution.count_students(&mut students_vec, &mut sandwiches_vec);
+  let remain = Solution::count_students(students_vec, sandwiches_vec);
   println!("unable to eat students = {}", remain);
 }
 
