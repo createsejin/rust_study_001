@@ -60,6 +60,11 @@ impl Solution {
     false
   }
 }
+impl AnotherSolution {
+  pub fn count_students(students: Vec<i32>, sandwiches: Vec<i32>) -> i32 {
+    let counts: Vec<i32> = Vec::from(vec![2; 0]);
+  }
+}
 
 pub fn test001() {
   let input = "students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]";
@@ -169,6 +174,22 @@ pub fn test004() {
 
   let remain = Solution::count_students(students_vec, sandwiches_vec);
   println!("unable to eat students = {}", remain);
+}
+
+pub fn test005() {
+  println!("input students array and sandwiches array like follow:");
+  println!("students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]");
+  // students = [1,1,1,0,1], sandwiches = [1,0,0,1,1]
+  // students = [0,0,0,1,0], sandwiches = [0,1,1,0,0]
+  // students = [1,1,0,0], sandwiches = [0,1,0,1]
+  // students = [1,0,1,1,0,0,1,0,1,1,0,1,0,0,0,1,1,0,0,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,1,0,0,0,0,1,0,1,0,0,1,0,0,0,1,1,1,0,1,1,1,1,0,1,1,0,0,1,0], sandwiches = [0,1,1,0,1,0,1,0,1,1,0,1,0,0,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0,1,0,1,1,1,1,1,0,0,1,1,1,0,1,1,1,0,1,0,1,1,0,0,0,0,1,0,0,1,0,1,1,0]
+  let input = get_input(String::from("> "));
+
+  let res = parsing_input(input);
+  let students_vec = res.0;
+  let sandwiches_vec = res.1;
+  println!("students_vec = {:?}", students_vec);
+  println!("sandwiches_vec = {:?}", sandwiches_vec);
 }
 
 fn parsing_input(input: String) -> (Vec<i32>, Vec<i32>) {

@@ -41,12 +41,6 @@ impl Config {
       ignore_case,
     })
   }
-  // pub fn get_query(&self) -> &str {
-  //   &self.query
-  // }
-  // pub fn get_file_path(&self) -> &str {
-  //   &self.file_path
-  // }
 }
 
 //@#run
@@ -92,7 +86,7 @@ pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a st
 mod tests {
   use super::*;
 
-  #[test]
+  #[test] //@#test.sens
   fn case_sensitive() {
     let query = "duct";
     let contents = "\
@@ -107,7 +101,7 @@ Duct tape.";
     );
   }
 
-  #[test]
+  #[test] //@#test.in
   fn case_insensitive() {
     let query = "rUsT";
     let contents = "\
