@@ -2,6 +2,11 @@ mod company;
 use company::ShirtColor;
 
 fn main() {
+  company::_study005();
+}
+
+#[allow(dead_code)]
+fn main_001() {
   let store = company::Inventory {
     shirts: vec![ShirtColor::Blue, ShirtColor::Red, ShirtColor::Blue],
   };

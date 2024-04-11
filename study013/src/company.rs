@@ -1,3 +1,5 @@
+use std::thread;
+
 #[derive(Debug, PartialEq, Copy, Clone)]
 pub enum ShirtColor {
   Red,
@@ -47,4 +49,37 @@ pub fn user_helper(user_pref: &Option<ShirtColor>, store: &Inventory) {
     "The user with preference {} gets {:?}",
     user_pref_color, giveaway
   );
+}
+
+pub fn _study003() {
+  let list = vec![1, 2, 3];
+  println!("Before defining closure: {:?}", list);
+
+  let only_brrows = || println!("From closure: {:?}", list);
+
+  println!("Before calling closure: {:?}", list);
+  only_brrows();
+  println!("After calling closure: {:?}", list);
+}
+
+pub fn _study004() {
+  let mut list = vec![1, 2, 3];
+  println!("Before defining closure: {:?}", list);
+
+  let mut borrows_mutably = || list.push(7);
+
+  // println!("Before calling closure: {:?}", list); //=> Error!
+  // cannot immutable borrow at the same time mutable borrowed value
+  borrows_mutably();
+  println!("After calling closure: {:?}", list);
+}
+
+pub fn _study005() {
+  let list = vec![1, 2, 3];
+  println!("Before defining closure: {:?}", list);
+
+  // thread::spawn(move || println!("From thread: {:?}", list)).join().unwrap();
+  thread::spawn(move || println!("From thread: {:?}", list))
+    .join()
+    .unwrap();
 }
