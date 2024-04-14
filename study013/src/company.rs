@@ -1,3 +1,4 @@
+use core::time::Duration;
 use std::thread;
 
 #[derive(Debug, PartialEq, Copy, Clone)]
@@ -70,8 +71,8 @@ pub fn _study001() {
 pub fn _study002() {
   let example_closure = |x| x;
 
-  let s = example_closure(String::from("hello"));
-  let n = example_closure(5);
+  let _s = example_closure(String::from("hello"));
+  // let n = example_closure(5); // Error
 }
 
 pub fn _study003() {
@@ -106,3 +107,4 @@ pub fn _study005() {
     .join()
     .unwrap();
 }
+// next: 13.1. Moving Captured Values Out of Closures and the Fn Traits
