@@ -1,4 +1,5 @@
 use std::thread;
+use std::time::Duration;
 
 #[derive(Debug, PartialEq, Copy, Clone)]
 pub enum ShirtColor {
@@ -70,8 +71,8 @@ pub fn _study001() {
 pub fn _study002() {
   let example_closure = |x| x;
 
-  let s = example_closure(String::from("hello"));
-  let n = example_closure(5);
+  let _s = example_closure(String::from("hello"));
+  let _n = example_closure(5.to_string());
 }
 
 pub fn _study003() {
