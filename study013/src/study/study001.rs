@@ -1,3 +1,6 @@
+use std::fmt::Debug;
+use std::fmt::Display;
+
 pub mod case001 {
   #[allow(dead_code)]
   struct Point<T> {
@@ -146,5 +149,118 @@ pub mod case004 {
     };
 
     println!("New article available! {}", article.summarize());
+  }
+}
+
+pub mod case005 {
+  pub trait Summary {
+    fn summarize_author(&self) -> String;
+
+    fn summarize(&self) -> String {
+      format!("(Read more from {}...)", self.summarize_author())
+    }
+  }
+
+  pub struct NewsArticle {
+    pub headline: String,
+    pub location: String,
+    pub author: String,
+    pub content: String,
+  }
+  impl Summary for NewsArticle {
+    fn summarize_author(&self) -> String {
+      format!("{}", self.author)
+    }
+  }
+
+  pub struct Tweet {
+    pub username: String,
+    pub content: String,
+    pub reply: bool,
+    pub retweet: bool,
+  }
+  impl Summary for Tweet {
+    fn summarize_author(&self) -> String {
+      format!("@{}", self.username)
+    }
+  }
+
+  pub fn _study005() {
+    let tweet = Tweet {
+      username: String::from("horse_ebooks"),
+      content: String::from("of course, as you probably already know, people"),
+      reply: false,
+      retweet: false,
+    };
+
+    println!("1 new tweet: {}", tweet.summarize());
+  }
+
+  #[allow(dead_code)]
+  pub fn notify<T: Summary>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
+  }
+
+  #[allow(dead_code)]
+  pub fn notify2<T: Summary>(item1: &T, item2: &T) {
+    println!("Breaking news1! {}", item1.summarize());
+    println!("Breaking news2! {}", item2.summarize());
+  }
+}
+
+pub mod case006 {
+
+  use super::case005::Summary;
+  use super::case005::Tweet;
+  use super::*;
+
+  #[allow(dead_code)]
+  pub fn notify<T: Summary + Display>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
+  }
+
+  #[allow(dead_code)]
+  fn some_func<T, U>(_t: &T, _u: &U) -> i32
+  where
+    T: Display + Clone,
+    U: Clone + Debug,
+  {
+    0
+  }
+
+  #[allow(dead_code)]
+  fn returns_summarizable() -> impl Summary {
+    Tweet {
+      username: String::from("horse_ebooks"),
+      content: String::from("of course, as you probably already know, people"),
+      reply: false,
+      retweet: false,
+    }
+  }
+}
+
+pub mod case007 {
+  use super::*;
+
+  #[allow(dead_code)]
+  struct Pair<T> {
+    x: T,
+    y: T,
+  }
+  #[allow(dead_code)]
+  impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+      Self { x, y }
+    }
+  }
+  #[allow(dead_code)]
+  impl<T: Display + PartialOrd> Pair<T> {
+    fn cmp_display(&self) {
+      if self.x >= self.y {
+        println!("The largest member is x = {}", self.x);
+      } else {
+        println!("The largest member is y = {}", self.y);
+      }
+    }
   }
 }
