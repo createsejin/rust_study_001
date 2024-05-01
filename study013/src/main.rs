@@ -3,7 +3,7 @@ mod study;
 use company::ShirtColor;
 
 fn main() {
-  study::study001::case002::_study002();
+  study::study001::case004::_study004();
 }
 
 #[allow(dead_code)]
