@@ -53,12 +53,24 @@ pub fn user_helper(user_pref: &Option<ShirtColor>, store: &Inventory) {
   );
 }
 
+pub fn _study001() {
+  let store = Inventory {
+    shirts: vec![ShirtColor::Blue, ShirtColor::Red, ShirtColor::Blue],
+  };
+
+  let user_pref1 = Some(ShirtColor::Red);
+  user_helper(&user_pref1, &store);
+
+  let user_pref2 = None;
+  user_helper(&user_pref2, &store);
+}
+
 #[allow(dead_code)]
 fn add_one_v1(x: u32) -> u32 {
   x + 1
 }
 
-pub fn _study001() {
+pub fn _study002() {
   let _expensive_closure = |num: u32| -> u32 {
     println!("calculating slowly...");
     thread::sleep(Duration::from_secs(2));
@@ -68,14 +80,14 @@ pub fn _study001() {
   let _add_one_v3 = |x: u32| x + 1;
 }
 
-pub fn _study002() {
+pub fn _study003() {
   let example_closure = |x| x;
 
   let _s = example_closure(String::from("hello"));
   let _n = example_closure(5.to_string());
 }
 
-pub fn _study003() {
+pub fn _study004() {
   let list = vec![1, 2, 3];
   println!("Before defining closure: {:?}", list);
 
@@ -86,7 +98,7 @@ pub fn _study003() {
   println!("After calling closure: {:?}", list);
 }
 
-pub fn _study004() {
+pub fn _study005() {
   let mut list = vec![1, 2, 3];
   println!("Before defining closure: {:?}", list);
 
@@ -98,7 +110,7 @@ pub fn _study004() {
   println!("After calling closure: {:?}", list);
 }
 
-pub fn _study005() {
+pub fn _study006() {
   let list = vec![1, 2, 3];
   println!("Before defining closure: {:?}", list);
 
