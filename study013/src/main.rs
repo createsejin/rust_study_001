@@ -2,5 +2,5 @@ mod company;
 mod study;
 
 fn main() {
-  study::study13::_study008();
+  study::study13::_study010();
 }

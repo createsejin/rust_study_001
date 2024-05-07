@@ -59,3 +59,56 @@ pub fn _study008() {
   println!("{list:#?}");
   println!("{:#?}", sort_operations);
 }
+
+pub fn _study009() {
+  let mut list = [
+    Rectangle {
+      width: 10,
+      height: 1,
+    },
+    Rectangle {
+      width: 3,
+      height: 5,
+    },
+    Rectangle {
+      width: 7,
+      height: 12,
+    },
+  ];
+
+  let mut num_sort_operations = 0;
+  list.sort_by_key(|r| {
+    num_sort_operations += 1;
+    r.width
+  });
+  println!("{list:#?}");
+  println!("sorted in {num_sort_operations} operations");
+}
+
+// Processing a Series of Items with Iterators
+pub fn _study010() {
+  let v1 = vec![1, 2, 3];
+  let v1_iter = v1.iter();
+  for val in v1_iter {
+    println!("Got: {val}");
+  }
+}
+
+// The Iterator Trait and the next Method
+#[test]
+pub fn _study011() {
+  let v1 = vec![1, 2, 3];
+  let mut v1_iter = v1.iter();
+  assert_eq!(v1_iter.next(), Some(&1));
+  assert_eq!(v1_iter.next(), Some(&2));
+  assert_eq!(v1_iter.next(), Some(&3));
+  assert_eq!(v1_iter.next(), None);
+}
+
+#[test]
+fn _study012() {
+  let v1 = vec![1, 2, 3];
+  let v1_iter = v1.iter();
+  let total: i32 = v1_iter.sum(); // take ownership, and v1_iter is no longer valid
+  assert_eq!(total, 6);
+}
