@@ -2,15 +2,18 @@ use std::thread;
 use std::time::Duration;
 
 #[derive(Debug, PartialEq, Copy, Clone)]
+#[allow(dead_code)]
 pub enum ShirtColor {
   Red,
   Blue,
 }
 
+#[allow(dead_code)]
 pub struct Inventory {
   pub shirts: Vec<ShirtColor>,
 }
 
+#[allow(dead_code)]
 impl Inventory {
   //@#giv
   pub fn giveaway(&self, user_preference: Option<ShirtColor>) -> ShirtColor {
@@ -39,6 +42,7 @@ impl Inventory {
   }
 }
 
+#[allow(dead_code)]
 pub fn user_helper(user_pref: &Option<ShirtColor>, store: &Inventory) {
   let giveaway = store.giveaway(*user_pref);
   let user_pref_color: String;
