@@ -110,5 +110,65 @@ fn _study012() {
   let v1 = vec![1, 2, 3];
   let v1_iter = v1.iter();
   let total: i32 = v1_iter.sum(); // take ownership, and v1_iter is no longer valid
+                                  // It is a consuming adaptor
   assert_eq!(total, 6);
+}
+
+pub fn _study013() {
+  let v1 = vec![1, 2, 3];
+  // the map is iterator adaptor, don't consuming iterator
+  let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
+  assert_eq!(v2, vec![2, 3, 4]);
+  for var in v2.iter() {
+    println!("{var}");
+  }
+}
+
+// Using Closures that Capture Their Environment
+#[derive(PartialEq, Debug)]
+struct Shoe {
+  size: u32,
+  style: String,
+}
+
+#[allow(dead_code)]
+fn shoes_in_size(shoes: Vec<Shoe>, shoe_size: u32) -> Vec<Shoe> {
+  //                    |-> take ownership
+  shoes.into_iter().filter(|s| s.size == shoe_size).collect()
+  //    |                  |-> only contains elements if which return true
+  //    |-> take ownership of Vec
+}
+
+#[test]
+fn _study014() {
+  let shoes = vec![
+    Shoe {
+      size: 10,
+      style: String::from("sneaker"),
+    },
+    Shoe {
+      size: 13,
+      style: String::from("sandal"),
+    },
+    Shoe {
+      size: 10,
+      style: String::from("boot"),
+    },
+  ];
+
+  let in_my_size = shoes_in_size(shoes, 10);
+
+  assert_eq!(
+    in_my_size,
+    vec![
+      Shoe {
+        size: 10,
+        style: String::from("sneaker"),
+      },
+      Shoe {
+        size: 10,
+        style: String::from("boot"),
+      },
+    ]
+  )
 }
