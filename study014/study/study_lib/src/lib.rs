@@ -1,9 +1,11 @@
+pub mod study15;
+
 pub fn add(left: usize, right: usize) -> usize {
   left + right
 }
 
 #[cfg(test)]
-mod tests {
+mod lib_tests {
   use super::*;
 
   #[test]
