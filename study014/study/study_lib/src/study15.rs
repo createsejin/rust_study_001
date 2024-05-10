@@ -10,7 +10,6 @@ enum List<T> {
   Nil,
 }
 
-#[allow(dead_code)]
 struct MyBox<T>(T);
 #[allow(dead_code)]
 impl<T> MyBox<T> {
@@ -24,6 +23,10 @@ impl<T> Deref for MyBox<T> {
   fn deref(&self) -> &Self::Target {
     &self.0
   }
+}
+
+pub fn hello(name: &str) {
+  println!("Hello, {name}!");
 }
 
 #[cfg(test)]
@@ -60,5 +63,13 @@ mod tests_study15 {
     let y = MyBox::new(x);
     assert_eq!(x, 5);
     assert_eq!(*y, 5);
+  }
+
+  #[test]
+  fn study006() {
+    let m = MyBox::new(String::from("Rust"));
+    hello(&m);
+    // The code we would have to write if Rust didn’t have deref coercion
+    hello(&(*m)[..]);
   }
 }

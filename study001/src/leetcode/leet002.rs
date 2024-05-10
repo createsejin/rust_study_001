@@ -60,11 +60,6 @@ impl Solution {
     false
   }
 }
-impl AnotherSolution {
-  pub fn count_students(students: Vec<i32>, sandwiches: Vec<i32>) -> i32 {
-    let counts: Vec<i32> = Vec::from(vec![2; 0]);
-  }
-}
 
 pub fn test001() {
   let input = "students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]";
