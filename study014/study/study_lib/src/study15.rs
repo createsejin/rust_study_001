@@ -195,6 +195,15 @@ mod study15_case001 {
   }
 
   #[test]
+  fn study009_case2() {
+    use List2::{Cons, Nil};
+
+    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    let _b = Cons(3, &a);
+    let _c = Cons(4, &a);
+  }
+
+  #[test]
   fn study010() {
     use List2::{Cons, Nil};
     let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
